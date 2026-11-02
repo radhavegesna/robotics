@@ -1,0 +1,8 @@
+# Tested with Python 3.13 on Linux (CPU). MuJoCo is pinned: 3.17 breaks the Fetch envs in gymnasium-robotics 1.4.2.
+torch>=2.4
+mujoco==3.3.0
+gymnasium==1.4.0
+gymnasium-robotics==1.4.2
+numpy>=2.0
+matplotlib>=3.8
+pytest>=8

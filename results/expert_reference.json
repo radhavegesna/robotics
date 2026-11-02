@@ -1,0 +1,106 @@
+{
+ "rows": [
+  {
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    16.62,
+    15.4,
+    17.82
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    17.76,
+    16.439500000000002,
+    18.9605
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.66,
+    0.52,
+    0.78
+   ],
+   "cycle_time": [
+    15.454545454545455,
+    13.969696969696969,
+    16.848484848484848
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 17
+   }
+  },
+  {
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    16.62,
+    15.4,
+    17.82
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    31.26,
+    29.24,
+    33.04
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  }
+ ]
+}

@@ -1,0 +1,1451 @@
+{
+ "config": {
+  "exp": "arch",
+  "seeds": 3,
+  "steps": 3000,
+  "episodes": 50,
+  "demos": 100,
+  "sizes": [
+   10,
+   25,
+   50,
+   100,
+   200
+  ],
+  "init_demos": 10,
+  "rounds": 5,
+  "collect": 20,
+  "threads": 1
+ },
+ "variations": {
+  "nominal": {
+   "name": "nominal",
+   "obj_range": 0.1,
+   "target_range": 0.1,
+   "mass_scale": 1.0,
+   "friction_scale": 1.0,
+   "obs_noise": 0.0,
+   "latency": 0
+  },
+  "wide_workspace": {
+   "name": "wide_workspace",
+   "obj_range": 0.15,
+   "target_range": 0.15,
+   "mass_scale": 1.0,
+   "friction_scale": 1.0,
+   "obs_noise": 0.0,
+   "latency": 0
+  },
+  "heavy_slippery": {
+   "name": "heavy_slippery",
+   "obj_range": 0.1,
+   "target_range": 0.1,
+   "mass_scale": 8.0,
+   "friction_scale": 0.25,
+   "obs_noise": 0.0,
+   "latency": 0
+  },
+  "noisy_sensor": {
+   "name": "noisy_sensor",
+   "obj_range": 0.1,
+   "target_range": 0.1,
+   "mass_scale": 1.0,
+   "friction_scale": 1.0,
+   "obs_noise": 0.005,
+   "latency": 0
+  },
+  "latency": {
+   "name": "latency",
+   "obj_range": 0.1,
+   "target_range": 0.1,
+   "mass_scale": 1.0,
+   "friction_scale": 1.0,
+   "obs_noise": 0.0,
+   "latency": 2
+  }
+ },
+ "rows": [
+  {
+   "arch": "mlp",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004810153506696224,
+   "train_samples": 8000,
+   "train_seconds": 11.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    0.96,
+    0.9,
+    1.0
+   ],
+   "cycle_time": [
+    16.895833333333332,
+    15.625,
+    18.125
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004810153506696224,
+   "train_samples": 8000,
+   "train_seconds": 11.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.62,
+    0.48,
+    0.76
+   ],
+   "cycle_time": [
+    17.06451612903226,
+    15.193548387096774,
+    18.70967741935484
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 19
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004810153506696224,
+   "train_samples": 8000,
+   "train_seconds": 11.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.68,
+    0.54,
+    0.8
+   ],
+   "cycle_time": [
+    15.205882352941176,
+    13.794117647058824,
+    16.41176470588235
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 14,
+    "never_grasped": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004810153506696224,
+   "train_samples": 8000,
+   "train_seconds": 11.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.54,
+    0.4,
+    0.68
+   ],
+   "cycle_time": [
+    37.81481481481482,
+    31.444444444444443,
+    44.52037037037036
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 7,
+    "never_grasped": 14,
+    "placed_then_drifted": 1,
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004810153506696224,
+   "train_samples": 8000,
+   "train_seconds": 11.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.78,
+    0.66,
+    0.88
+   ],
+   "cycle_time": [
+    44.84615384615385,
+    39.23076923076923,
+    50.36282051282049
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 7,
+    "dropped": 3,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0034155906178057194,
+   "train_samples": 8000,
+   "train_seconds": 84.3,
+   "params": 152836,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    17.16,
+    15.88,
+    18.44
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0034155906178057194,
+   "train_samples": 8000,
+   "train_seconds": 84.3,
+   "params": 152836,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.88,
+    0.78,
+    0.96
+   ],
+   "cycle_time": [
+    19.977272727272727,
+    17.75,
+    22.568749999999994
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 6
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0034155906178057194,
+   "train_samples": 8000,
+   "train_seconds": 84.3,
+   "params": 152836,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.72,
+    0.6,
+    0.84
+   ],
+   "cycle_time": [
+    16.333333333333332,
+    14.499305555555555,
+    17.88888888888889
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 14
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0034155906178057194,
+   "train_samples": 8000,
+   "train_seconds": 84.3,
+   "params": 152836,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.98,
+    0.94,
+    1.0
+   ],
+   "cycle_time": [
+    20.06122448979592,
+    17.652551020408165,
+    22.93928571428571
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0034155906178057194,
+   "train_samples": 8000,
+   "train_seconds": 84.3,
+   "params": 152836,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.62,
+    0.48,
+    0.76
+   ],
+   "cycle_time": [
+    42.774193548387096,
+    36.612096774193546,
+    48.64596774193548
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 11,
+    "never_grasped": 4,
+    "carried_not_placed": 3,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004180510062724352,
+   "train_samples": 8000,
+   "train_seconds": 169.7,
+   "params": 102724,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    0.98,
+    0.94,
+    1.0
+   ],
+   "cycle_time": [
+    17.081632653061224,
+    15.775510204081632,
+    18.245408163265303
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004180510062724352,
+   "train_samples": 8000,
+   "train_seconds": 169.7,
+   "params": 102724,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.98,
+    0.94,
+    1.0
+   ],
+   "cycle_time": [
+    19.714285714285715,
+    18.163265306122447,
+    21.06122448979592
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004180510062724352,
+   "train_samples": 8000,
+   "train_seconds": 169.7,
+   "params": 102724,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.82,
+    0.7,
+    0.92
+   ],
+   "cycle_time": [
+    16.317073170731707,
+    14.829268292682928,
+    17.78048780487805
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 9
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004180510062724352,
+   "train_samples": 8000,
+   "train_seconds": 169.7,
+   "params": 102724,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.8,
+    0.68,
+    0.9
+   ],
+   "cycle_time": [
+    34.45,
+    28.75,
+    40.700625
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 2,
+    "never_grasped": 3,
+    "placed_then_drifted": 2,
+    "carried_not_placed": 3
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.004180510062724352,
+   "train_samples": 8000,
+   "train_seconds": 169.7,
+   "params": 102724,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.46,
+    0.32,
+    0.6
+   ],
+   "cycle_time": [
+    47.91304347826087,
+    41.47826086956522,
+    53.95760869565217
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "carried_not_placed": 3,
+    "never_grasped": 7,
+    "dropped": 16,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.03641052171587944,
+   "train_samples": 8000,
+   "train_seconds": 14.4,
+   "params": 74244,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    0.96,
+    0.9,
+    1.0
+   ],
+   "cycle_time": [
+    16.375,
+    15.145833333333334,
+    17.52135416666666
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.03641052171587944,
+   "train_samples": 8000,
+   "train_seconds": 14.4,
+   "params": 74244,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.7,
+    0.58,
+    0.82
+   ],
+   "cycle_time": [
+    17.82857142857143,
+    15.570714285714285,
+    20.285714285714285
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 15
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.03641052171587944,
+   "train_samples": 8000,
+   "train_seconds": 14.4,
+   "params": 74244,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.92,
+    0.84,
+    0.98
+   ],
+   "cycle_time": [
+    16.5,
+    15.195652173913043,
+    17.804347826086957
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 2,
+    "never_grasped": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.03641052171587944,
+   "train_samples": 8000,
+   "train_seconds": 14.4,
+   "params": 74244,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.52,
+    0.38,
+    0.66
+   ],
+   "cycle_time": [
+    40.61538461538461,
+    32.42307692307692,
+    48.50192307692306
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 8,
+    "carried_not_placed": 3,
+    "never_grasped": 12,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.03641052171587944,
+   "train_samples": 8000,
+   "train_seconds": 14.4,
+   "params": 74244,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.68,
+    0.56,
+    0.8
+   ],
+   "cycle_time": [
+    43.35294117647059,
+    39.38235294117647,
+    47.9720588235294
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 10,
+    "placed_then_drifted": 2,
+    "never_grasped": 4
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.004119737073779106,
+   "train_samples": 8000,
+   "train_seconds": 86.8,
+   "params": 152836,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    17.18,
+    15.9,
+    18.44
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.004119737073779106,
+   "train_samples": 8000,
+   "train_seconds": 86.8,
+   "params": 152836,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.82,
+    0.7,
+    0.92
+   ],
+   "cycle_time": [
+    20.024390243902438,
+    17.462804878048782,
+    22.853658536585368
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 5,
+    "carried_not_placed": 2,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.004119737073779106,
+   "train_samples": 8000,
+   "train_seconds": 86.8,
+   "params": 152836,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.66,
+    0.52,
+    0.78
+   ],
+   "cycle_time": [
+    15.212121212121213,
+    13.757575757575758,
+    16.424242424242426
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 17
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.004119737073779106,
+   "train_samples": 8000,
+   "train_seconds": 86.8,
+   "params": 152836,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.84,
+    0.72,
+    0.94
+   ],
+   "cycle_time": [
+    19.88095238095238,
+    17.595238095238095,
+    22.38095238095238
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 1,
+    "never_grasped": 4,
+    "placed_then_drifted": 3
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.004119737073779106,
+   "train_samples": 8000,
+   "train_seconds": 86.8,
+   "params": 152836,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.82,
+    0.72,
+    0.92
+   ],
+   "cycle_time": [
+    41.21951219512195,
+    36.09756097560975,
+    46.12378048780487
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "carried_not_placed": 3,
+    "placed_then_drifted": 1,
+    "dropped": 4,
+    "never_grasped": 1
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.0033476511016488075,
+   "train_samples": 8000,
+   "train_seconds": 167.0,
+   "params": 102724,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    17.8,
+    16.1,
+    19.78
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "transformer",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.0033476511016488075,
+   "train_samples": 8000,
+   "train_seconds": 167.0,
+   "params": 102724,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.96,
+    0.9,
+    1.0
+   ],
+   "cycle_time": [
+    19.458333333333332,
+    17.770833333333332,
+    21.270833333333332
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 2
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.0033476511016488075,
+   "train_samples": 8000,
+   "train_seconds": 167.0,
+   "params": 102724,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.72,
+    0.6,
+    0.84
+   ],
+   "cycle_time": [
+    16.86111111111111,
+    15.055555555555555,
+    18.5
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 14
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.0033476511016488075,
+   "train_samples": 8000,
+   "train_seconds": 167.0,
+   "params": 102724,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.66,
+    0.52,
+    0.78
+   ],
+   "cycle_time": [
+    36.75757575757576,
+    29.060606060606062,
+    44.06136363636364
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "carried_not_placed": 1,
+    "never_grasped": 6,
+    "placed_then_drifted": 2,
+    "dropped": 8
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.0033476511016488075,
+   "train_samples": 8000,
+   "train_seconds": 167.0,
+   "params": 102724,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.76,
+    0.64,
+    0.88
+   ],
+   "cycle_time": [
+    42.21052631578947,
+    36.78947368421053,
+    47.31710526315789
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 7,
+    "placed_then_drifted": 4,
+    "never_grasped": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.0044931513257324696,
+   "train_samples": 8000,
+   "train_seconds": 14.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    16.86,
+    15.62,
+    18.06
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "mlp",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.0044931513257324696,
+   "train_samples": 8000,
+   "train_seconds": 14.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.74,
+    0.62,
+    0.8404999999999972
+   ],
+   "cycle_time": [
+    17.2972972972973,
+    15.567567567567568,
+    18.783783783783782
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 12,
+    "dropped": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.0044931513257324696,
+   "train_samples": 8000,
+   "train_seconds": 14.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    16.96,
+    15.7,
+    18.1805
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "mlp",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.0044931513257324696,
+   "train_samples": 8000,
+   "train_seconds": 14.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.72,
+    0.6,
+    0.84
+   ],
+   "cycle_time": [
+    37.916666666666664,
+    31.75,
+    44.97291666666666
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 10,
+    "dropped": 1,
+    "carried_not_placed": 1,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.0044931513257324696,
+   "train_samples": 8000,
+   "train_seconds": 14.1,
+   "params": 74244,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.74,
+    0.62,
+    0.86
+   ],
+   "cycle_time": [
+    44.567567567567565,
+    40.86351351351351,
+    48.648648648648646
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 4,
+    "placed_then_drifted": 2,
+    "dropped": 6,
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00301728886552155,
+   "train_samples": 8000,
+   "train_seconds": 89.6,
+   "params": 152836,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    17.02,
+    15.78,
+    18.22
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00301728886552155,
+   "train_samples": 8000,
+   "train_seconds": 89.6,
+   "params": 152836,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.94,
+    0.88,
+    1.0
+   ],
+   "cycle_time": [
+    18.76595744680851,
+    17.170212765957448,
+    20.148936170212767
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 3
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00301728886552155,
+   "train_samples": 8000,
+   "train_seconds": 89.6,
+   "params": 152836,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.98,
+    0.94,
+    1.0
+   ],
+   "cycle_time": [
+    17.020408163265305,
+    15.73469387755102,
+    18.20459183673469
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00301728886552155,
+   "train_samples": 8000,
+   "train_seconds": 89.6,
+   "params": 152836,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    18.58,
+    16.86,
+    20.52
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00301728886552155,
+   "train_samples": 8000,
+   "train_seconds": 89.6,
+   "params": 152836,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.78,
+    0.66,
+    0.8804999999999973
+   ],
+   "cycle_time": [
+    37.12820512820513,
+    33.17884615384616,
+    41.07692307692308
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 4,
+    "never_grasped": 5,
+    "carried_not_placed": 2
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.003275811206549406,
+   "train_samples": 8000,
+   "train_seconds": 174.8,
+   "params": 102724,
+   "demos": 100,
+   "variation": "nominal",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    17.0,
+    15.72,
+    18.2805
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "transformer",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.003275811206549406,
+   "train_samples": 8000,
+   "train_seconds": 174.8,
+   "params": 102724,
+   "demos": 100,
+   "variation": "wide_workspace",
+   "n": 50,
+   "success": [
+    0.98,
+    0.94,
+    1.0
+   ],
+   "cycle_time": [
+    19.306122448979593,
+    17.591836734693878,
+    21.020408163265305
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.003275811206549406,
+   "train_samples": 8000,
+   "train_seconds": 174.8,
+   "params": 102724,
+   "demos": 100,
+   "variation": "heavy_slippery",
+   "n": 50,
+   "success": [
+    0.98,
+    0.94,
+    1.0
+   ],
+   "cycle_time": [
+    16.93877551020408,
+    15.612244897959183,
+    18.14336734693877
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.003275811206549406,
+   "train_samples": 8000,
+   "train_seconds": 174.8,
+   "params": 102724,
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 50,
+   "success": [
+    0.82,
+    0.7,
+    0.92
+   ],
+   "cycle_time": [
+    35.292682926829265,
+    29.48780487804878,
+    41.41463414634146
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1,
+    "carried_not_placed": 1,
+    "dropped": 3,
+    "never_grasped": 4
+   }
+  },
+  {
+   "arch": "transformer",
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.003275811206549406,
+   "train_samples": 8000,
+   "train_seconds": 174.8,
+   "params": 102724,
+   "demos": 100,
+   "variation": "latency",
+   "n": 50,
+   "success": [
+    0.5,
+    0.36,
+    0.62
+   ],
+   "cycle_time": [
+    44.28,
+    38.0,
+    50.64
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 6,
+    "dropped": 15,
+    "carried_not_placed": 1,
+    "never_grasped": 3
+   }
+  }
+ ]
+}
