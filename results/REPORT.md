@@ -98,3 +98,14 @@ Offline data per seed: 100 expert demos on `nominal` + 100 deployment rollouts o
 
 ![E5](figures/e5_rl.png)
 
+## E5b · Can RL learn where the teacher fails? (4-step latency)
+
+The scripted expert scores 0% here: its gain is stable at 2 steps of delay but oscillates at 4. Same pipeline as E5 with 30,000 online steps. Success per seed:
+
+| Reward | Seed | BC | Offline IQL | Online checkpoints (every 5,000 steps) |
+|---|---|---|---|---|
+| sparse | 0 | 0% | 0% | 0%, 5%, 2%, 5%, 0%, 0%, 0% |
+| sparse | 1 | 2% | 5% | 5%, 0%, 2%, 8%, 2%, 10%, 2% |
+| shaped | 0 | 0% | 0% | 0%, 0%, 2%, 2%, 0%, 0%, 0% |
+| shaped | 1 | 2% | 8% | 8%, 2%, 2%, 5%, 8%, 5%, 8% |
+

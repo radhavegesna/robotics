@@ -300,5 +300,20 @@ if any(e5.values()):
     fig.savefig(os.path.join(FIG, "e5_rl.png"), dpi=140)
     lines += ["", "![E5](figures/e5_rl.png)", ""]
 
+# ---------------- E5b
+e5b = {r: load(f"e5_rl_{r}_latency_4") for r in ("sparse", "shaped")}
+if any(e5b.values()):
+    cfg = next(d for d in e5b.values() if d)["config"]
+    lines += ["## E5b · Can RL learn where the teacher fails? (4-step latency)", "",
+              "The scripted expert scores 0% here: its gain is stable at 2 steps of delay but oscillates at 4. "
+              f"Same pipeline as E5 with {cfg['online_steps']:,} online steps. Success per seed:", "",
+              "| Reward | Seed | BC | Offline IQL | Online checkpoints (every "
+              f"{cfg['eval_every']:,} steps) |", "|---|---|---|---|---|"]
+    for rw, d in e5b.items():
+        for r in (d or {"rows": []})["rows"]:
+            lines.append(f"| {rw} | {r['seed']} | {100*r['bc']['success']:.0f}% | {100*r['offline']['success']:.0f}% | "
+                         + ", ".join(f"{100*c['success']:.0f}%" for c in r["online_curve"]) + " |")
+    lines.append("")
+
 open(os.path.join(RES, "REPORT.md"), "w").write("\n".join(lines) + "\n")
 print("\n".join(lines))

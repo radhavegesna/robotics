@@ -105,7 +105,14 @@ catastrophic-forgetting problem for a continual-learning loop.
 
 ![E5](results/figures/e5_rl.png)
 
-<!-- LATENCY4 -->
+**6. Negative result: RL did not learn the task where the teacher itself fails.** With a 4-step delay
+the scripted expert scores **0%** (its feedback gain is stable at 2 steps of delay but oscillates at 4),
+and every imitation policy collapses with it (0–5%, E4). Offline IQL plus 30k online steps stayed at
+**0–10%** with both rewards (2 seeds each; the third seed was stopped early). Offline data built from a
+teacher that never succeeds gives RL almost no successful transitions to propagate value from, and this
+CPU-sized online budget does not find them by exploration. Next steps worth testing: a delay-aware
+teacher (lower gain or a predictor) to produce *some* successful demos, a much larger online budget on a
+GPU, and curriculum training from latency 2 → 3 → 4.
 
 ## Repo layout
 
@@ -150,7 +157,8 @@ python scripts/make_report.py
 - [x] **Stage 1**: demos, three BC architectures, held-out variations, reliability harness, HG-DAgger
 - [x] **Stage 2**: randomised latency/noise demos + action-history inputs; offline IQL on demos + logged
       rollouts, then online fine-tuning with demos kept in the replay buffer; sparse vs shaped reward
-- [ ] **Stage 2c**: fix the forgetting in E5 (keep nominal episodes in the online mix, or regularise towards
+- [ ] **Stage 2c**: crack the 4-step-latency case (delay-aware teacher, latency curriculum, larger RL budget)
+- [ ] **Stage 2d**: fix the forgetting in E5 (keep nominal episodes in the online mix, or regularise towards
       the pre-fine-tuning policy) and fine-tune the LSTM+ah3 policy instead of an MLP
 - [ ] **Stage 2b**: action chunking (ACT-style) and a diffusion-policy head as further architecture ablations
 - [ ] **Stage 3**: export to ONNX/TensorRT, run on NVIDIA Jetson Thor, report control rate (Hz) and latency

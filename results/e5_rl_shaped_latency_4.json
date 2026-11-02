@@ -1,0 +1,240 @@
+{
+ "config": {
+  "exp": "rl",
+  "train_data": "randomized",
+  "reward": "shaped",
+  "target": "latency_4",
+  "seeds": 3,
+  "demos": 100,
+  "steps": 3000,
+  "episodes": 40,
+  "act_hist": 3,
+  "rollouts": 100,
+  "offline_updates": 10000,
+  "online_steps": 30000,
+  "eval_every": 5000,
+  "threads": 1
+ },
+ "rows": [
+  {
+   "seed": 0,
+   "reward": "shaped",
+   "target": "latency_4",
+   "bc": {
+    "success": 0.0,
+    "cycle_time": NaN,
+    "failures": {
+     "never_grasped": 39,
+     "placed_then_drifted": 1
+    }
+   },
+   "bc_rollout_success": 0.01,
+   "offline": {
+    "success": 0.0,
+    "cycle_time": NaN,
+    "failures": {
+     "never_grasped": 39,
+     "placed_then_drifted": 1
+    }
+   },
+   "online_curve": [
+    {
+     "env_steps": 0,
+     "success": 0.0,
+     "cycle_time": NaN,
+     "failures": {
+      "never_grasped": 39,
+      "placed_then_drifted": 1
+     }
+    },
+    {
+     "env_steps": 5000,
+     "minutes": 1.3,
+     "success": 0.0,
+     "cycle_time": NaN,
+     "failures": {
+      "never_grasped": 39,
+      "placed_then_drifted": 1
+     }
+    },
+    {
+     "env_steps": 10000,
+     "minutes": 2.7,
+     "success": 0.025,
+     "cycle_time": 33.0,
+     "failures": {
+      "never_grasped": 37,
+      "placed_then_drifted": 2
+     }
+    },
+    {
+     "env_steps": 15000,
+     "minutes": 4.0,
+     "success": 0.025,
+     "cycle_time": 16.0,
+     "failures": {
+      "never_grasped": 37,
+      "placed_then_drifted": 2
+     }
+    },
+    {
+     "env_steps": 20000,
+     "minutes": 5.4,
+     "success": 0.0,
+     "cycle_time": NaN,
+     "failures": {
+      "never_grasped": 39,
+      "placed_then_drifted": 1
+     }
+    },
+    {
+     "env_steps": 25000,
+     "minutes": 6.8,
+     "success": 0.0,
+     "cycle_time": NaN,
+     "failures": {
+      "never_grasped": 35,
+      "placed_then_drifted": 5
+     }
+    },
+    {
+     "env_steps": 30000,
+     "minutes": 8.2,
+     "success": 0.0,
+     "cycle_time": NaN,
+     "failures": {
+      "never_grasped": 38,
+      "placed_then_drifted": 2
+     }
+    }
+   ],
+   "nominal_after_finetune": {
+    "success": 0.625,
+    "cycle_time": 24.24,
+    "failures": {
+     "never_grasped": 4,
+     "carried_not_placed": 5,
+     "placed_then_drifted": 5,
+     "dropped": 1
+    }
+   },
+   "offline_transitions": {
+    "demo": 8000,
+    "rollouts": 8000
+   }
+  },
+  {
+   "seed": 1,
+   "reward": "shaped",
+   "target": "latency_4",
+   "bc": {
+    "success": 0.025,
+    "cycle_time": 1.0,
+    "failures": {
+     "never_grasped": 38,
+     "placed_then_drifted": 1
+    }
+   },
+   "bc_rollout_success": 0.05,
+   "offline": {
+    "success": 0.075,
+    "cycle_time": 42.333333333333336,
+    "failures": {
+     "never_grasped": 35,
+     "dropped": 2
+    }
+   },
+   "online_curve": [
+    {
+     "env_steps": 0,
+     "success": 0.075,
+     "cycle_time": 42.333333333333336,
+     "failures": {
+      "never_grasped": 35,
+      "dropped": 2
+     }
+    },
+    {
+     "env_steps": 5000,
+     "minutes": 1.5,
+     "success": 0.025,
+     "cycle_time": 1.0,
+     "failures": {
+      "never_grasped": 34,
+      "carried_not_placed": 1,
+      "dropped": 3,
+      "placed_then_drifted": 1
+     }
+    },
+    {
+     "env_steps": 10000,
+     "minutes": 3.0,
+     "success": 0.025,
+     "cycle_time": 1.0,
+     "failures": {
+      "never_grasped": 36,
+      "placed_then_drifted": 1,
+      "dropped": 2
+     }
+    },
+    {
+     "env_steps": 15000,
+     "minutes": 4.6,
+     "success": 0.05,
+     "cycle_time": 12.5,
+     "failures": {
+      "never_grasped": 33,
+      "dropped": 4,
+      "placed_then_drifted": 1
+     }
+    },
+    {
+     "env_steps": 20000,
+     "minutes": 6.2,
+     "success": 0.075,
+     "cycle_time": 26.666666666666668,
+     "failures": {
+      "never_grasped": 33,
+      "dropped": 3,
+      "placed_then_drifted": 1
+     }
+    },
+    {
+     "env_steps": 25000,
+     "minutes": 7.8,
+     "success": 0.05,
+     "cycle_time": 32.0,
+     "failures": {
+      "never_grasped": 35,
+      "dropped": 3
+     }
+    },
+    {
+     "env_steps": 30000,
+     "minutes": 9.1,
+     "success": 0.075,
+     "cycle_time": 33.0,
+     "failures": {
+      "never_grasped": 33,
+      "placed_then_drifted": 1,
+      "dropped": 3
+     }
+    }
+   ],
+   "nominal_after_finetune": {
+    "success": 0.875,
+    "cycle_time": 21.65714285714286,
+    "failures": {
+     "placed_then_drifted": 1,
+     "carried_not_placed": 2,
+     "dropped": 1,
+     "never_grasped": 1
+    }
+   },
+   "offline_transitions": {
+    "demo": 8000,
+    "rollouts": 8000
+   }
+  }
+ ]
+}
