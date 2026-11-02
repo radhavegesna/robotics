@@ -33,7 +33,7 @@ def wilson(k, n, z=1.96):
     d = 1 + z * z / n
     c = (p + z * z / (2 * n)) / d
     h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
-    return c - h, c + h
+    return max(0.0, c - h), min(1.0, c + h)
 
 
 def pooled_success(rows):
@@ -204,6 +204,101 @@ if e3:
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "e3_hg_dagger.png"), dpi=140)
     lines += ["", "![E3](figures/e3_hg_dagger.png)", ""]
+
+# ---------------- E4
+E4_VARS = ["nominal", "noisy_sensor", "noisy_sensor_10mm", "latency", "latency_4"]
+e4 = [load(f"e4_robust_{t}") for t in ("nominal", "randomized")]
+if any(e4):
+    g = defaultdict(list)
+    for d in e4:
+        for r in (d or {"rows": []})["rows"]:
+            g[(r["train_data"], r["arch"], r["act_hist"], r["variation"])].append(r)
+    cfg = next(d for d in e4 if d)["config"]
+    models = [("mlp", 0), ("mlp", 3), ("lstm", 0), ("lstm", 3)]
+    lines += ["# Stage 2", "",
+              "## E4 · Randomised training and action-history inputs", "",
+              f"{cfg['demos']} demos per seed, {cfg['steps']} gradient steps, {cfg['episodes']} evaluation episodes "
+              "per variation per seed. `randomized` demos sample a control latency of 0–3 steps and 0–6 mm sensor "
+              "noise per episode; `+ah3` policies also see their last 3 commanded actions. `noisy_sensor` (5 mm) and "
+              "`latency` (2 steps) lie inside the randomisation range; `noisy_sensor_10mm` and `latency_4` lie outside it.", "",
+              "| Train data | Policy | " + " | ".join(E4_VARS) + " |", "|---|---|" + "---|" * len(E4_VARS),
+              "| – | *expert (privileged)* | " + " | ".join(
+                  f"*{100*expert[v]['success'][0]:.0f}%*" if v in expert else "–" for v in E4_VARS) + " |"]
+    for td in ("nominal", "randomized"):
+        for arch, k in models:
+            cells = []
+            for v in E4_VARS:
+                rows = g.get((td, arch, k, v), [])
+                if rows:
+                    m, lo, hi, _ = pooled_success(rows)
+                    cells.append(fmt(m, lo, hi))
+                else:
+                    cells.append("–")
+            lines.append(f"| {td} | {arch}{'+ah3' if k else ''} | " + " | ".join(cells) + " |")
+    fig, axs = plt.subplots(1, 2, figsize=(10, 3.4), sharey=True)
+    w = 0.2
+    for ax, td in zip(axs, ("nominal", "randomized")):
+        for i, (arch, k) in enumerate(models):
+            ms = []
+            for v in E4_VARS:
+                rows = g.get((td, arch, k, v), [])
+                ms.append(pooled_success(rows)[0] if rows else float("nan"))
+            ax.bar(np.arange(len(E4_VARS)) + (i - 1.5) * w, ms, w, label=f"{arch}{'+ah3' if k else ''}",
+                   color=["#4C72B0", "#9DB7E0", "#DD8452", "#F0C29E"][i])
+        ax.set_xticks(range(len(E4_VARS)), E4_VARS, fontsize=7.5)
+        ax.set_title(f"trained on {td} demos", fontsize=10)
+        ax.set_ylim(0, 1.05)
+    axs[0].set_ylabel("success rate")
+    axs[0].legend(fontsize=7, ncol=2)
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIG, "e4_robust.png"), dpi=140)
+    lines += ["", "![E4](figures/e4_robust.png)", ""]
+
+# ---------------- E5
+e5 = {r: load(f"e5_rl_{r}") for r in ("sparse", "shaped")}
+if any(e5.values()):
+    cfg = next(d for d in e5.values() if d)["config"]
+    lines += ["## E5 · Offline → online RL (IQL) in the 2-step-latency setting", "",
+              f"Offline data per seed: {cfg['demos']} expert demos on `nominal` + {cfg['rollouts']} deployment rollouts "
+              f"of the BC policy in `{cfg['target']}` (successes and failures). IQL is trained offline for "
+              f"{cfg['offline_updates']:,} updates, then fine-tuned online for {cfg['online_steps']:,} environment steps "
+              "(half of each batch from the offline data). All policies are MLPs with 3-step action history. "
+              f"Success is measured on {cfg['episodes']} evaluation episodes per checkpoint per seed.", "",
+              "| Reward | BC | Offline IQL | Online, final | Nominal after fine-tune | Cycle time BC → final |",
+              "|---|---|---|---|---|---|"]
+    fig, ax = plt.subplots(figsize=(6, 3.4))
+    for rw, d in e5.items():
+        if not d:
+            continue
+        R = d["rows"]
+        n_ep = cfg["episodes"] * len(R)
+        def pool(vals):
+            k = sum(round(v * cfg["episodes"]) for v in vals)
+            lo, hi = wilson(k, n_ep)
+            return fmt(k / n_ep, lo, hi)
+        lines.append(f"| {rw} (seeds={len(R)}) | {pool([r['bc']['success'] for r in R])} | "
+                     f"{pool([r['offline']['success'] for r in R])} | "
+                     f"{pool([r['online_curve'][-1]['success'] for r in R])} | "
+                     f"{pool([r['nominal_after_finetune']['success'] for r in R])} | "
+                     f"{nanmean([r['bc']['cycle_time'] for r in R]):.1f} → "
+                     f"{nanmean([r['online_curve'][-1]['cycle_time'] for r in R]):.1f} |")
+        steps = [c["env_steps"] for c in R[0]["online_curve"]]
+        curves = np.array([[c["success"] for c in r["online_curve"]] for r in R if len(r["online_curve"]) == len(steps)])
+        m = curves.mean(0)
+        ax.plot(steps, m, "o-", label=f"IQL, {rw} reward", color="#C44E52" if rw == "shaped" else "#8172B3")
+        if len(curves) > 1:
+            ax.fill_between(steps, curves.min(0), curves.max(0), alpha=0.15,
+                            color="#C44E52" if rw == "shaped" else "#8172B3")
+        bc = np.mean([r["bc"]["success"] for r in R])
+    ax.axhline(bc, ls="--", color="k", lw=1, label="BC (same demos)")
+    ax.set_xlabel("online environment steps")
+    ax.set_ylabel("success rate (latency = 2)")
+    ax.set_ylim(0, 1.05)
+    ax.legend(fontsize=8)
+    ax.set_title("E5: offline IQL, then online fine-tuning (band = min–max over seeds)", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIG, "e5_rl.png"), dpi=140)
+    lines += ["", "![E5](figures/e5_rl.png)", ""]
 
 open(os.path.join(RES, "REPORT.md"), "w").write("\n".join(lines) + "\n")
 print("\n".join(lines))

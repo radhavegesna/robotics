@@ -101,6 +101,50 @@
     0.0
    ],
    "failures": {}
+  },
+  {
+   "variation": "latency_4",
+   "n": 50,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 44,
+    "placed_then_drifted": 2,
+    "dropped": 4
+   }
+  },
+  {
+   "variation": "noisy_sensor_10mm",
+   "n": 50,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    16.62,
+    15.4,
+    17.82
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
   }
  ]
 }

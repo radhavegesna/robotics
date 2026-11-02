@@ -78,6 +78,8 @@ def run_episode(env, agent, seed: int, assisted: bool, record: bool = False) -> 
                 res.takeover_acts.append(a)
         else:
             a = a_pol
+        if hasattr(agent, "observe"):
+            agent.observe(a)
         obs, _, term, trunc, info = env.step(a)
         s = info["state"]
         hist.append(potential(s))

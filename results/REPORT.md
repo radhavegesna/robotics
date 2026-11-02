@@ -67,3 +67,34 @@ Both start from 10 demos. Each HG-DAgger round deploys the policy with the super
 
 ![E3](figures/e3_hg_dagger.png)
 
+# Stage 2
+
+## E4 · Randomised training and action-history inputs
+
+100 demos per seed, 3000 gradient steps, 40 evaluation episodes per variation per seed. `randomized` demos sample a control latency of 0–3 steps and 0–6 mm sensor noise per episode; `+ah3` policies also see their last 3 commanded actions. `noisy_sensor` (5 mm) and `latency` (2 steps) lie inside the randomisation range; `noisy_sensor_10mm` and `latency_4` lie outside it.
+
+| Train data | Policy | nominal | noisy_sensor | noisy_sensor_10mm | latency | latency_4 |
+|---|---|---|---|---|---|---|
+| – | *expert (privileged)* | *100%* | *100%* | *100%* | *100%* | *0%* |
+| nominal | mlp | 98% [94–100] | 62% [53–70] | 8% [5–15] | 76% [67–83] | 4% [2–9] |
+| nominal | mlp+ah3 | 99% [95–100] | 82% [74–88] | 8% [5–15] | 79% [71–85] | 2% [1–7] |
+| nominal | lstm | 100% [97–100] | 95% [90–98] | 75% [67–82] | 71% [62–78] | 2% [0–6] |
+| nominal | lstm+ah3 | 100% [97–100] | 98% [93–99] | 83% [76–89] | 89% [82–94] | 5% [2–10] |
+| randomized | mlp | 82% [75–88] | 77% [68–83] | 11% [6–18] | 88% [80–92] | 0% [0–3] |
+| randomized | mlp+ah3 | 98% [94–100] | 93% [87–97] | 41% [32–50] | 92% [86–96] | 1% [0–5] |
+| randomized | lstm | 98% [94–100] | 100% [97–100] | 96% [91–98] | 91% [84–95] | 2% [1–7] |
+| randomized | lstm+ah3 | 99% [95–100] | 100% [97–100] | 98% [93–99] | 98% [94–100] | 2% [1–7] |
+
+![E4](figures/e4_robust.png)
+
+## E5 · Offline → online RL (IQL) in the 2-step-latency setting
+
+Offline data per seed: 100 expert demos on `nominal` + 100 deployment rollouts of the BC policy in `latency` (successes and failures). IQL is trained offline for 10,000 updates, then fine-tuned online for 15,000 environment steps (half of each batch from the offline data). All policies are MLPs with 3-step action history. Success is measured on 40 evaluation episodes per checkpoint per seed.
+
+| Reward | BC | Offline IQL | Online, final | Nominal after fine-tune | Cycle time BC → final |
+|---|---|---|---|---|---|
+| sparse (seeds=3) | 79% [71–85] | 77% [68–83] | 84% [77–90] | 88% [81–93] | 37.5 → 28.6 |
+| shaped (seeds=3) | 79% [71–85] | 85% [78–90] | 92% [85–95] | 89% [82–94] | 37.5 → 31.9 |
+
+![E5](figures/e5_rl.png)
+

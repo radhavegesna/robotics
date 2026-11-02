@@ -5,11 +5,11 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from relman.envs import VARIATIONS, make_env  # noqa: E402
+from relman.envs import EXTRA_VARIATIONS, VARIATIONS, make_env  # noqa: E402
 from relman.evaluate import ExpertAgent, run_episode, summarize  # noqa: E402
 
 rows = []
-for v in VARIATIONS:
+for v in [*VARIATIONS, *EXTRA_VARIATIONS]:
     env = make_env(v)
     holder = {}
     orig_step, orig_reset = env.step, env.reset

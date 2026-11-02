@@ -7,7 +7,7 @@ and control latency.
 from __future__ import annotations
 
 from collections import deque
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, replace
 
 import gymnasium as gym
 import numpy as np
@@ -46,6 +46,17 @@ VARIATIONS: dict[str, Variation] = {
 }
 
 
+# Evaluation-only variations that lie *outside* the stage-2 randomisation range.
+EXTRA_VARIATIONS: dict[str, Variation] = {
+    "latency_4": Variation("latency_4", obj_range=0.10, target_range=0.10, latency=4),
+    "noisy_sensor_10mm": Variation("noisy_sensor_10mm", obj_range=0.10, target_range=0.10, obs_noise=0.010),
+}
+
+# Stage-2 training randomisation: each episode samples a latency and a noise level.
+RANDOM_LATENCY = (0, 3)          # inclusive
+RANDOM_NOISE = (0.0, 0.006)      # metres
+
+
 class VariationWrapper(gym.Wrapper):
     """Applies a Variation to FetchPickAndPlace and flattens observations.
 
@@ -66,6 +77,7 @@ class VariationWrapper(gym.Wrapper):
         m.geom_friction[gid, 0] *= var.friction_scale
         self._queue: deque = deque()
         self._rng = np.random.default_rng(0)
+        self.randomize = False
         self.observation_space = gym.spaces.Box(-np.inf, np.inf, (OBS_DIM,), np.float32)
 
     def _flat(self, o: dict, noisy: bool) -> np.ndarray:
@@ -79,6 +91,9 @@ class VariationWrapper(gym.Wrapper):
     def reset(self, *, seed=None, options=None):
         o, info = self.env.reset(seed=seed, options=options)
         self._rng = np.random.default_rng(seed)
+        if self.randomize:
+            self.var = replace(self.var, latency=int(self._rng.integers(RANDOM_LATENCY[0], RANDOM_LATENCY[1] + 1)),
+                               obs_noise=float(self._rng.uniform(*RANDOM_NOISE)))
         self._queue = deque([np.zeros(4, np.float32)] * self.var.latency)
         info["state"] = flatten(o)
         return self._flat(o, True), info
@@ -106,10 +121,18 @@ def flatten(o: dict) -> np.ndarray:
 
 
 def make_env(variation: str | Variation = "nominal") -> VariationWrapper:
-    var = VARIATIONS[variation] if isinstance(variation, str) else variation
+    """`variation` is a name from VARIATIONS / EXTRA_VARIATIONS, a Variation, or
+    "randomized" (nominal layout, per-episode random latency and sensor noise)."""
+    if variation == "randomized":
+        var, rand = VARIATIONS["nominal"], True
+    else:
+        var = variation if isinstance(variation, Variation) else {**VARIATIONS, **EXTRA_VARIATIONS}[variation]
+        rand = False
     env = gym.make("FetchPickAndPlace-v4", max_episode_steps=MAX_STEPS)
-    return VariationWrapper(env, var)
+    w = VariationWrapper(env, var)
+    w.randomize = rand
+    return w
 
 
 def variation_dict(name: str) -> dict:
-    return asdict(VARIATIONS[name])
+    return asdict({**VARIATIONS, **EXTRA_VARIATIONS}[name])

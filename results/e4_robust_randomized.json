@@ -1,0 +1,1962 @@
+{
+ "config": {
+  "exp": "robust",
+  "train_data": "randomized",
+  "reward": "shaped",
+  "target": "latency",
+  "seeds": 3,
+  "demos": 100,
+  "steps": 3000,
+  "episodes": 40,
+  "act_hist": 3,
+  "rollouts": 100,
+  "offline_updates": 10000,
+  "online_steps": 15000,
+  "eval_every": 3000,
+  "threads": 1
+ },
+ "rows": [
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.07568074762821198,
+   "train_samples": 8000,
+   "train_seconds": 13.6,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    0.85,
+    0.725,
+    0.95
+   ],
+   "cycle_time": [
+    17.176470588235293,
+    15.646323529411765,
+    18.558823529411764
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 6
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.07568074762821198,
+   "train_samples": 8000,
+   "train_seconds": 13.6,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    0.775,
+    0.65,
+    0.9
+   ],
+   "cycle_time": [
+    26.258064516129032,
+    22.129032258064516,
+    30.871774193548383
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 6,
+    "placed_then_drifted": 2,
+    "dropped": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.07568074762821198,
+   "train_samples": 8000,
+   "train_seconds": 13.6,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.075,
+    0.0,
+    0.175
+   ],
+   "cycle_time": [
+    27.333333333333332,
+    1.0,
+    41.0
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 30,
+    "dropped": 6,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.07568074762821198,
+   "train_samples": 8000,
+   "train_seconds": 13.6,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.825,
+    0.7,
+    0.925
+   ],
+   "cycle_time": [
+    33.72727272727273,
+    30.63560606060606,
+    37.333333333333336
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 5,
+    "never_grasped": 1,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.07568074762821198,
+   "train_samples": 8000,
+   "train_seconds": 13.6,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 35,
+    "dropped": 2,
+    "placed_then_drifted": 1,
+    "carried_not_placed": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.040928762406110764,
+   "train_samples": 8000,
+   "train_seconds": 14.9,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    0.975,
+    0.925,
+    1.0
+   ],
+   "cycle_time": [
+    18.46153846153846,
+    17.128205128205128,
+    19.692307692307693
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.040928762406110764,
+   "train_samples": 8000,
+   "train_seconds": 14.9,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    0.9,
+    0.8,
+    0.975
+   ],
+   "cycle_time": [
+    22.61111111111111,
+    20.277083333333334,
+    25.02777777777778
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 4
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.040928762406110764,
+   "train_samples": 8000,
+   "train_seconds": 14.9,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.275,
+    0.15,
+    0.425
+   ],
+   "cycle_time": [
+    40.27272727272727,
+    28.0,
+    51.90909090909091
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 23,
+    "dropped": 2,
+    "placed_then_drifted": 4
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.040928762406110764,
+   "train_samples": 8000,
+   "train_seconds": 14.9,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.85,
+    0.725,
+    0.95
+   ],
+   "cycle_time": [
+    36.35294117647059,
+    32.616176470588236,
+    40.35367647058823
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 2,
+    "placed_then_drifted": 3,
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.040928762406110764,
+   "train_samples": 8000,
+   "train_seconds": 14.9,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.025,
+    0.0,
+    0.075
+   ],
+   "cycle_time": [
+    54.0,
+    54.0,
+    54.0
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 36,
+    "dropped": 2,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0071701779961586,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    18.0,
+    16.375,
+    19.525
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0071701779961586,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    18.7,
+    16.949375,
+    20.325624999999995
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0071701779961586,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.95,
+    0.875,
+    1.0
+   ],
+   "cycle_time": [
+    25.342105263157894,
+    21.473684210526315,
+    29.31578947368421
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 1,
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0071701779961586,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.925,
+    0.85,
+    1.0
+   ],
+   "cycle_time": [
+    35.62162162162162,
+    32.40472972972973,
+    39.001351351351346
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 3
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.0071701779961586,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 38,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.009154406376183033,
+   "train_samples": 8000,
+   "train_seconds": 96.6,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    0.975,
+    0.925,
+    1.0
+   ],
+   "cycle_time": [
+    18.435897435897434,
+    16.56346153846154,
+    20.358974358974358
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.009154406376183033,
+   "train_samples": 8000,
+   "train_seconds": 96.6,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    19.025,
+    16.95,
+    21.325
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.009154406376183033,
+   "train_samples": 8000,
+   "train_seconds": 96.6,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    23.3,
+    20.4,
+    26.525
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.009154406376183033,
+   "train_samples": 8000,
+   "train_seconds": 96.6,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    34.675,
+    32.05,
+    36.8
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 0,
+   "steps": 3000,
+   "final_loss": 0.009154406376183033,
+   "train_samples": 8000,
+   "train_seconds": 96.6,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 38,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.04415584355592728,
+   "train_samples": 8000,
+   "train_seconds": 13.1,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    0.85,
+    0.725,
+    0.95
+   ],
+   "cycle_time": [
+    17.764705882352942,
+    16.235294117647058,
+    19.11764705882353
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 6
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.04415584355592728,
+   "train_samples": 8000,
+   "train_seconds": 13.1,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    0.75,
+    0.625,
+    0.875
+   ],
+   "cycle_time": [
+    29.8,
+    24.999166666666667,
+    34.80083333333332
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "carried_not_placed": 3,
+    "never_grasped": 6,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.04415584355592728,
+   "train_samples": 8000,
+   "train_seconds": 13.1,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.125,
+    0.025,
+    0.225
+   ],
+   "cycle_time": [
+    33.6,
+    13.965000000000002,
+    51.6
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 4,
+    "never_grasped": 29,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.04415584355592728,
+   "train_samples": 8000,
+   "train_seconds": 13.1,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.925,
+    0.825,
+    1.0
+   ],
+   "cycle_time": [
+    33.75675675675676,
+    32.2972972972973,
+    35.351351351351354
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 1,
+    "placed_then_drifted": 1,
+    "dropped": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.04415584355592728,
+   "train_samples": 8000,
+   "train_seconds": 13.1,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 39,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.008066248148679733,
+   "train_samples": 8000,
+   "train_seconds": 18.5,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    18.525,
+    17.025,
+    19.9
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.008066248148679733,
+   "train_samples": 8000,
+   "train_seconds": 18.5,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    0.925,
+    0.825,
+    1.0
+   ],
+   "cycle_time": [
+    26.756756756756758,
+    22.756756756756758,
+    31.190540540540532
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 3
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.008066248148679733,
+   "train_samples": 8000,
+   "train_seconds": 18.5,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.35,
+    0.2,
+    0.5
+   ],
+   "cycle_time": [
+    42.42857142857143,
+    32.357142857142854,
+    51.92857142857143
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 25,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.008066248148679733,
+   "train_samples": 8000,
+   "train_seconds": 18.5,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.975,
+    0.925,
+    1.0
+   ],
+   "cycle_time": [
+    33.256410256410255,
+    30.871794871794872,
+    35.128846153846155
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.008066248148679733,
+   "train_samples": 8000,
+   "train_seconds": 18.5,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 35,
+    "dropped": 3,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.038741521537303925,
+   "train_samples": 8000,
+   "train_seconds": 93.2,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    0.95,
+    0.875,
+    1.0
+   ],
+   "cycle_time": [
+    18.263157894736842,
+    16.604605263157893,
+    20.026315789473685
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 2
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.038741521537303925,
+   "train_samples": 8000,
+   "train_seconds": 93.2,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    18.525,
+    16.85,
+    20.025
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.038741521537303925,
+   "train_samples": 8000,
+   "train_seconds": 93.2,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.95,
+    0.875,
+    1.0
+   ],
+   "cycle_time": [
+    22.236842105263158,
+    19.18421052631579,
+    25.685526315789467
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.038741521537303925,
+   "train_samples": 8000,
+   "train_seconds": 93.2,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.85,
+    0.725,
+    0.95
+   ],
+   "cycle_time": [
+    36.73529411764706,
+    32.85294117647059,
+    41.0
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 2,
+    "placed_then_drifted": 3,
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.038741521537303925,
+   "train_samples": 8000,
+   "train_seconds": 93.2,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.025,
+    0.0,
+    0.075
+   ],
+   "cycle_time": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 39
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.037291429936885834,
+   "train_samples": 8000,
+   "train_seconds": 102.4,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    19.05,
+    17.425,
+    20.525624999999994
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.037291429936885834,
+   "train_samples": 8000,
+   "train_seconds": 102.4,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    19.5,
+    17.899375,
+    21.05
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.037291429936885834,
+   "train_samples": 8000,
+   "train_seconds": 102.4,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    19.875,
+    18.399375,
+    21.175
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.037291429936885834,
+   "train_samples": 8000,
+   "train_seconds": 102.4,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.95,
+    0.875,
+    1.0
+   ],
+   "cycle_time": [
+    35.6578947368421,
+    32.920394736842105,
+    38.1578947368421
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1,
+    "dropped": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 1,
+   "steps": 3000,
+   "final_loss": 0.037291429936885834,
+   "train_samples": 8000,
+   "train_seconds": 102.4,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.05,
+    0.0,
+    0.125
+   ],
+   "cycle_time": [
+    67.5,
+    57.0,
+    78.0
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 35,
+    "dropped": 2,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.008671034127473831,
+   "train_samples": 8000,
+   "train_seconds": 13.5,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    0.775,
+    0.625,
+    0.9
+   ],
+   "cycle_time": [
+    18.06451612903226,
+    16.419354838709676,
+    19.548387096774192
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 9
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.008671034127473831,
+   "train_samples": 8000,
+   "train_seconds": 13.5,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    0.775,
+    0.65,
+    0.9
+   ],
+   "cycle_time": [
+    26.870967741935484,
+    23.095967741935485,
+    30.870967741935484
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "carried_not_placed": 1,
+    "never_grasped": 6,
+    "dropped": 1,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.008671034127473831,
+   "train_samples": 8000,
+   "train_seconds": 13.5,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.125,
+    0.025,
+    0.225
+   ],
+   "cycle_time": [
+    29.4,
+    12.0,
+    48.4
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 32,
+    "carried_not_placed": 1,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.008671034127473831,
+   "train_samples": 8000,
+   "train_seconds": 13.5,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.875,
+    0.75,
+    0.975
+   ],
+   "cycle_time": [
+    36.02857142857143,
+    32.74285714285714,
+    39.372142857142855
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "dropped": 1,
+    "never_grasped": 3,
+    "carried_not_placed": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.008671034127473831,
+   "train_samples": 8000,
+   "train_seconds": 13.5,
+   "params": 74244,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 39,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.006095950957387686,
+   "train_samples": 8000,
+   "train_seconds": 15.0,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    0.975,
+    0.925,
+    1.0
+   ],
+   "cycle_time": [
+    18.358974358974358,
+    16.897435897435898,
+    19.564102564102566
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.006095950957387686,
+   "train_samples": 8000,
+   "train_seconds": 15.0,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    0.975,
+    0.925,
+    1.0
+   ],
+   "cycle_time": [
+    21.76923076923077,
+    18.71794871794872,
+    25.58974358974359
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.006095950957387686,
+   "train_samples": 8000,
+   "train_seconds": 15.0,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.6,
+    0.45,
+    0.75
+   ],
+   "cycle_time": [
+    43.208333333333336,
+    35.20729166666667,
+    50.79270833333332
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 12,
+    "dropped": 2,
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.006095950957387686,
+   "train_samples": 8000,
+   "train_seconds": 15.0,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.95,
+    0.875,
+    1.0
+   ],
+   "cycle_time": [
+    33.05263157894737,
+    30.394736842105264,
+    35.71118421052631
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 2
+   }
+  },
+  {
+   "arch": "mlp",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.006095950957387686,
+   "train_samples": 8000,
+   "train_seconds": 15.0,
+   "params": 77316,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "cycle_time": [
+    NaN,
+    NaN,
+    NaN
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 37,
+    "carried_not_placed": 1,
+    "placed_then_drifted": 1,
+    "dropped": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.007415967993438244,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    18.075,
+    16.375,
+    19.650624999999994
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.007415967993438244,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    17.975,
+    16.399375,
+    19.450624999999995
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.007415967993438244,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.975,
+    0.925,
+    1.0
+   ],
+   "cycle_time": [
+    27.53846153846154,
+    22.794871794871796,
+    32.949999999999996
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.007415967993438244,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    0.95,
+    0.875,
+    1.0
+   ],
+   "cycle_time": [
+    36.0,
+    32.68355263157895,
+    39.3421052631579
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 1,
+    "placed_then_drifted": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 0,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.007415967993438244,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 152836,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.05,
+    0.0,
+    0.125
+   ],
+   "cycle_time": [
+    26.5,
+    1.0,
+    52.0
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 37,
+    "dropped": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00440227473154664,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "nominal",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    18.075,
+    16.224375000000002,
+    20.05
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00440227473154664,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    19.8,
+    17.1,
+    23.075624999999995
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00440227473154664,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "noisy_sensor_10mm",
+   "n": 40,
+   "success": [
+    0.925,
+    0.825,
+    1.0
+   ],
+   "cycle_time": [
+    26.08108108108108,
+    22.161486486486485,
+    30.16216216216216
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "placed_then_drifted": 1,
+    "never_grasped": 1,
+    "dropped": 1
+   }
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00440227473154664,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency",
+   "n": 40,
+   "success": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cycle_time": [
+    36.85,
+    33.474375,
+    40.40124999999999
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {}
+  },
+  {
+   "arch": "lstm",
+   "act_hist": 3,
+   "seed": 2,
+   "steps": 3000,
+   "final_loss": 0.00440227473154664,
+   "train_samples": 8000,
+   "train_seconds": 97.9,
+   "params": 154372,
+   "train_data": "randomized",
+   "demos": 100,
+   "variation": "latency_4",
+   "n": 40,
+   "success": [
+    0.025,
+    0.0,
+    0.075
+   ],
+   "cycle_time": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "interventions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "failures": {
+    "never_grasped": 37,
+    "placed_then_drifted": 1,
+    "dropped": 1
+   }
+  }
+ ]
+}

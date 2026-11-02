@@ -6,14 +6,17 @@ import time
 import torch
 import torch.nn.functional as F
 
-from .data import Episodes, Normalizer, windows
+from .data import Episodes, Normalizer, augment, windows
+from .envs import ACT_DIM, OBS_DIM
 from .policies import ARCHS, Agent
 
 
 def train_bc(eps: Episodes, arch: str, seed: int = 0, steps: int = 3000, batch: int = 256,
-             lr: float = 1e-3, norm: Normalizer | None = None, verbose: bool = False) -> tuple[Agent, dict]:
+             lr: float = 1e-3, norm: Normalizer | None = None, verbose: bool = False,
+             act_hist: int = 0) -> tuple[Agent, dict]:
     torch.manual_seed(seed)
-    model = ARCHS[arch]()
+    eps = augment(eps, act_hist)
+    model = ARCHS[arch](obs_dim=OBS_DIM + ACT_DIM * act_hist)
     norm = norm or Normalizer.fit(eps)
     X, Y = windows(eps, model.history)
     X = norm(X)
@@ -34,7 +37,7 @@ def train_bc(eps: Episodes, arch: str, seed: int = 0, steps: int = 3000, batch: 
         sched.step()
         if verbose and step % 500 == 0:
             print(f"  [{arch} s{seed}] step {step} loss {loss.item():.4f}")
-    info = {"arch": arch, "seed": seed, "steps": steps, "final_loss": float(loss.item()),
+    info = {"arch": arch, "act_hist": act_hist, "seed": seed, "steps": steps, "final_loss": float(loss.item()),
             "train_samples": len(X), "train_seconds": round(time.time() - t0, 1),
             "params": sum(p.numel() for p in model.parameters())}
-    return Agent(model, norm), info
+    return Agent(model, norm, act_hist=act_hist), info

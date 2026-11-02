@@ -14,7 +14,7 @@ the way you would for a real deployment:
 5. *(stage 2)* **Offline → online RL** fine-tuning on top of the imitation policy, with reward design.
 6. *(stage 3)* **On-device deployment** on NVIDIA Jetson Thor: quantised policy, control-rate and latency.
 
-Stage 1 (steps 1–4) is complete and runs on a laptop CPU. All numbers below come from the code in this repo.
+Stages 1 and 2 (steps 1–5) are complete and run on a laptop CPU. All numbers below come from the code in this repo.
 
 ## Task and variations
 
@@ -84,6 +84,29 @@ depends on the shift.** All three policies score 97–100% on `nominal`. On held
 10 demos to 0.03 at 200 on `nominal`, but 0.33 remain on `wide_workspace` even at 200 demos. More of the
 same data does not close a distribution shift.
 
+## Results (stage 2)
+
+**4. For shifts you can anticipate, randomised demonstrations + memory beat RL fine-tuning.** Demos collected
+with a random 0–3 step control delay and 0–6 mm sensor noise per episode (the privileged expert still
+labels from the true state), plus an LSTM that also sees its last 3 commanded actions (`+ah3`), score
+**98–100% on every in-range variation** and **98% on 10 mm noise, outside the training range** (E4).
+Action history matters most for the memoryless MLP (5 mm noise: 62% → 82% with nominal data; 10 mm:
+11% → 41% with randomised data). Randomisation alone *hurt* the plain MLP on nominal (98% → 82%): without
+memory it cannot tell which latency it is in, so it learns an average behaviour.
+
+![E4](results/figures/e4_robust.png)
+
+**5. Offline → online RL improves on its own demonstrations, but forgets.** With a 2-step delay, IQL trained
+on nominal demos plus 100 logged BC rollouts (successes *and* failures), then fine-tuned online for 15k
+steps, goes from **79% (BC) to 92% [85–95]** with a shaped reward and **84%** with the sparse reward, and
+finishes the task faster (**37.5 → 29–32 steps**) because it is optimising for reward, not copying the
+teacher. But success on the *nominal* setup fell from 99% to 88–89% after fine-tuning: a concrete
+catastrophic-forgetting problem for a continual-learning loop.
+
+![E5](results/figures/e5_rl.png)
+
+<!-- LATENCY4 -->
+
 ## Repo layout
 
 ```
@@ -95,9 +118,11 @@ relman/
   train.py      behaviour-cloning trainer
   evaluate.py   reliability harness: autonomous + assisted rollouts, failure taxonomy, bootstrap CIs
   dagger.py     HG-DAgger intervention collection
+  rl.py         IQL (offline + online fine-tuning), sparse / potential-shaped rewards, replay buffers
 scripts/
   run_experiments.py   E1 architectures, E2 demo scaling, E3 HG-DAgger vs equal-effort BC
   expert_reference.py  teacher's own score on every variation (the ceiling)
+  run_stage2.py        E4 randomised training + action history, E5 offline -> online RL
   make_report.py       results/*.json -> results/REPORT.md + figures
 tests/test_smoke.py
 ```
@@ -112,15 +137,21 @@ python scripts/expert_reference.py
 python scripts/run_experiments.py arch      # ~25 min on 1 CPU thread
 python scripts/run_experiments.py scaling   # ~15 min
 python scripts/run_experiments.py dagger    # ~15 min
+python scripts/run_stage2.py robust --train-data nominal       # ~20 min each
+python scripts/run_stage2.py robust --train-data randomized
+python scripts/run_stage2.py rl --reward sparse                # ~25 min each
+python scripts/run_stage2.py rl --reward shaped
+python scripts/run_stage2.py rl --reward shaped --target latency_4 --online-steps 30000 --eval-every 5000
 python scripts/make_report.py
 ```
 
 ## Roadmap
 
 - [x] **Stage 1**: demos, three BC architectures, held-out variations, reliability harness, HG-DAgger
-- [ ] **Stage 2**: offline RL (IQL) on demos + failed rollouts, then online fine-tuning (RLPD-style, demos
-      in the replay buffer); compare sparse vs shaped rewards; train with randomised latency and sensor noise
-      and re-run E1 to see which failures it fixes
+- [x] **Stage 2**: randomised latency/noise demos + action-history inputs; offline IQL on demos + logged
+      rollouts, then online fine-tuning with demos kept in the replay buffer; sparse vs shaped reward
+- [ ] **Stage 2c**: fix the forgetting in E5 (keep nominal episodes in the online mix, or regularise towards
+      the pre-fine-tuning policy) and fine-tune the LSTM+ah3 policy instead of an MLP
 - [ ] **Stage 2b**: action chunking (ACT-style) and a diffusion-policy head as further architecture ablations
 - [ ] **Stage 3**: export to ONNX/TensorRT, run on NVIDIA Jetson Thor, report control rate (Hz) and latency
       per architecture and precision
